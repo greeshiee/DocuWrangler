@@ -23,7 +23,7 @@ const CitationHoverCard: React.FC<CitationHoverCardProps> = ({
 
   return (
     <div
-      className="fixed z-50 w-80 p-3 rounded-lg bg-white text-black shadow-lg border dark:bg-gray-800 dark:text-white"
+      className="fixed z-50 w-80 p-3 rounded-lg bg-[#67331c] shadow-lg border"
       style={{ top: position.top, left: position.left }}
     >
       <div className="flex items-center mb-2 gap-2">

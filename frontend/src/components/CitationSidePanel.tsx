@@ -22,7 +22,7 @@ const CitationSidePanel: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`fixed top-0 right-0 h-full rounded-2xl w-[40%] bg-gray-800 text-gray-100 shadow-lg z-50 transform transition-transform duration-300 ${
+      className={`fixed top-0 right-0 h-full rounded-2xl w-[40%] bg-[#67331c] text-gray-100 shadow-lg z-50 transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -32,7 +32,7 @@ const CitationSidePanel: React.FC<Props> = ({
           <h2 className="text-lg font-semibold">{source}</h2>
         </div>
         <button onClick={onClose}>
-          <X className="w-5 h-5 text-white hover:text-black" />
+          <X className="w-5 h-5 bg-[#ff580e]rounded-full text-white hover:text-black" />
         </button>
       </div>
       <div className="p-4">
