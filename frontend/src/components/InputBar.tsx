@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { ArrowUp, Plus } from "lucide-react";
+import axios from "axios";
 
 const InputBar: React.FC<{ onSend: (text: string) => void }> = ({ onSend }) => {
   const [text, setText] = useState("");
@@ -16,16 +17,38 @@ const InputBar: React.FC<{ onSend: (text: string) => void }> = ({ onSend }) => {
     fileInputRef.current?.click(); 
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && file.type === "application/pdf") {
-      onSend(`Uploaded file: ${file.name}`);
-      console.log(file.type);
+const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  
+  // Validate file type
+  if (!file.name.toLowerCase().endsWith('.pdf')) {
+    onSend("Error: Only PDF files are allowed");
+    return;
+  }
+  
+  const formData = new FormData();
+  formData.append("file", file);
+  
+  try {
+    const response = await axios.post("http://localhost:5000/process_pdf", formData);
+    
+    if (response.data.status === "success") {
+      console.log("PDF uploaded:", response.data);
+      onSend(`PDF processed successfully! ID: ${response.data.pdf_id}`);
+      if (event.target.value) event.target.value = ''; 
+      onSend(`Upload error: ${response.data.message || "Unknown error"}`);
     }
-    else{
-      onSend(`Cannot upload file, it must be a pdf`);
+  } catch (error) {
+    console.error("Upload error:", error);
+    if (axios.isAxiosError(error) && error.response) {
+      onSend(`Upload failed: ${error.response.data?.message || error.response.statusText}`);
+    } else {
+      onSend("Failed to process PDF. Check if the server is running.");
     }
-  };
+  }
+};
+  
 
   return (
     <div className="flex gap-2 p-4 mb-4 border-t rounded-xl bg-[#291e19] border-stone-300">
