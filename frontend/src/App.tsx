@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import React from "react";
+import Chatbot from "./pages/Chatbot";
+import Hero from "./pages/Hero";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <div>
-      <p className='text-5xl'>Hello</p>
-    </div>
-  )
-}
+    <Hero/>
+  );
+};
 
-export default App
+export default App;
+
