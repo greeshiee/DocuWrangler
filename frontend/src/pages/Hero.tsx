@@ -26,7 +26,7 @@ const HeroPage = () => {
       <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] pt-[80px] px-4">
         <header className="text-white max-w-[800px] w-full p-8 rounded-xl">
           <h1 className="text-[200px] leading-none font-[Rye] drop-shadow-[0_4px_1.2px_rgba(255,235,200,0.8)]">
-            Frontier Chat
+            DocuWrangler
           </h1>
           <p className="text-xl md:text-2xl text-yellow-100 mt-4 font-[Farro]">
             Saddle up, partner. It’s time to ride the AI frontier.
