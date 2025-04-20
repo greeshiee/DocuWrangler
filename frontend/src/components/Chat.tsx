@@ -22,8 +22,8 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col bg-none w-full h-full">
-      <div className="flex-1 overflow-y-auto px-4 py-6 bg-gray-900">
+    <div className="flex flex-col bg-transparent w-full h-full">
+      <div className="flex-1 overflow-y-auto px-4 py-6 bg-transparent">
         {messages.map((msg) => (
           <MessageBubble key={msg.id} message={msg} />
         ))}

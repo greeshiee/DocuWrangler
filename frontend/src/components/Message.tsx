@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Message } from "../types";
 import CitationBadge from "./CitationBadge";
 import CitationHoverCard from "./CitationHoverCard";
-import { useCitation } from "../context/CitationContext"; // ← use context instead of local panel state
+import { useCitation } from "../context/CitationContext";
 
 const MessageBubble: React.FC<{ message: Message }> = ({ message }) => {
   const isUser = message.role === "user";
@@ -42,8 +42,10 @@ const MessageBubble: React.FC<{ message: Message }> = ({ message }) => {
   return (
     <div className={`relative flex ${isUser ? "justify-end" : "justify-start"} my-2`}>
       <div
-        className={`max-w-md px-4 py-2 rounded-lg text-sm ${
-          isUser ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-100"
+        className={`max-w-md px-4 py-2 rounded-xl text-sm shadow-md border
+        ${isUser
+            ? "bg-amber-700 text-white border-yellow-900 dark:bg-yellow-800 dark:text-yellow-100 dark:border-yellow-900"
+            : "bg-stone-200 text-stone-800 border-stone-400 dark:bg-stone-800 dark:text-stone-100 dark:border-stone-600"
         }`}
       >
         {message.content}

@@ -7,7 +7,7 @@ import { CitationProvider, useCitation } from "../context/CitationContext";
 const Chatbot = () => {
   return (
     <CitationProvider>
-      <div className="flex w-screen h-screen bg-gray-900 text-white font-sans overflow-hidden">
+      <div className="flex w-screen h-screen bg-orange-100 text-white font-sans overflow-hidden">
         <Sidebar />
         <div className="flex-1 flex pt-12 px-8 flex-col relative">
           <Chat />
